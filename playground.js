@@ -1,4 +1,4 @@
-const a = [{'city': 'Austin'}, {'city': 'Atlanta'}]
+const a = [{ 'city': 'Austin' }, { 'city': 'Atlanta' }]
 a.forEach(element => {
-    console.log(element.city);
-});
+    console.log(element.city)
+})

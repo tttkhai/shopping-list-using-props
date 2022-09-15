@@ -1,13 +1,13 @@
-import { React, useEffect, useState } from "react";
-import InMyCart from "../components/InMyCart";
-import NeedToBuy from "../components/NeedToBuy";
-import ShoppingForm from "../components/ShoppingForm";
+import { React, useEffect, useState } from "react"
+import InMyCart from "../components/InMyCart"
+import NeedToBuy from "../components/NeedToBuy"
+import ShoppingForm from "../components/ShoppingForm"
 import _ from 'lodash'
 
 const Dashboard = () => {
-    const [inMyCartItem, setInMyCartItem] = useState([]);
-    const [wishListItem, setWishListItem] = useState([]);
-    const [selectedItem, setSelectedItem] = useState({});
+    const [inMyCartItem, setInMyCartItem] = useState([])
+    const [wishListItem, setWishListItem] = useState([])
+    const [selectedItem, setSelectedItem] = useState({})
     useEffect(() => {
         selectItem()
     }, [])
@@ -22,8 +22,8 @@ const Dashboard = () => {
             return
         }
 
-        setInMyCartItem([item, ...inMyCartItem]);
-    };
+        setInMyCartItem([item, ...inMyCartItem])
+    }
 
     const selectItem = (item) => {
         if (item) {
@@ -33,19 +33,19 @@ const Dashboard = () => {
 
     const removeFromCart = (item) => {
         if (!_.isEmpty(item)) {
-            setWishListItem([item, ...wishListItem]);
+            setWishListItem([item, ...wishListItem])
             setSelectedItem({})
-            setInMyCartItem(inMyCartItem.filter((element) => item.id !== element.id));
+            setInMyCartItem(inMyCartItem.filter((element) => item.id !== element.id))
         }
-    };
+    }
 
     const removeFromWishlist = (item) => {
         if (!_.isEmpty(item)) {
-            setInMyCartItem([item, ...inMyCartItem]);
+            setInMyCartItem([item, ...inMyCartItem])
             setSelectedItem({})
-            setWishListItem(wishListItem.filter((element) => item.id !== element.id));
+            setWishListItem(wishListItem.filter((element) => item.id !== element.id))
         }
-    };
+    }
 
     return (
         <>
@@ -64,7 +64,7 @@ const Dashboard = () => {
                 <NeedToBuy wishListItem={wishListItem} selectItem={selectItem} selectedItem={selectedItem} />
             </div>
         </>
-    );
-};
+    )
+}
 
-export default Dashboard;
+export default Dashboard
