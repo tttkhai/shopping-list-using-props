@@ -1,7 +1,9 @@
 import { React, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-const ShoppingForm = ({ addToCart }) => {
+const ShoppingForm = ({cart}) => {
     const [input, setInput] = useState('')
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
         setInput(e.target.value)
@@ -9,7 +11,11 @@ const ShoppingForm = ({ addToCart }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addToCart({ id: Math.floor(Math.random() * 100), item: input })
+        dispatch({
+            type: 'ADD_TO_CART',
+            payload: [{ id: Math.floor(Math.random() * 100), item: input }, ...cart]
+        })
+
         setInput('')
     }
 
