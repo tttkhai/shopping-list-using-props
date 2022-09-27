@@ -5,19 +5,14 @@ const InMyCart = ({ wishList, cart }) => {
     const dispatch = useDispatch()
 
     const addToWishList = (product, index) => {
-        wishList = [...wishList, product];
-        cart.splice(index,1);
-        console.log("cart in NeedToBuy "+JSON.stringify(cart));
-        console.log("wishList NeedToBuy "+JSON.stringify(wishList));
-
         dispatch({
             type: 'ADD_TO_CART',
-            payload: cart
+            payload: cart.splice(index,1)
         })
 
         dispatch({
             type: 'ADD_TO_WISHLIST',
-            payload: wishList
+            payload: [...wishList, product]
         })
     }
 

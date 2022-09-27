@@ -5,17 +5,14 @@ const NeedToBuy = ({ wishList, cart }) => {
     const dispatch = useDispatch()
 
     const addToCart = (product, index) => {
-        wishList.splice(index, 1)
-        cart = [...cart, product];
-
         dispatch({
             type: 'ADD_TO_CART',
-            payload: cart
+            payload: [...cart, product]
         })
 
         dispatch({
             type: 'ADD_TO_WISHLIST',
-            payload: wishList
+            payload: wishList.splice(index, 1)
         })
     }
 
